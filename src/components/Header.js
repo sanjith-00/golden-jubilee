@@ -11,31 +11,32 @@ function Header() {
   const cars = useSelector(selectCars)
   return (
     <Container>
+      {/* just add school logo alone */}
       <a>
-         <img src="/images/logo.svg" alt="logo"/>
+         {/* <img src="/images/logo.svg" alt="logo"/> */}
       </a>
       <Menu>
         {cars && cars.map((car ,index) => (
-          <a key={index} href="#">{car}</a>
+          <a  key={index} href="/">{car}</a>
         ))}
         <SubMenu>
-          <a href="#">Shop</a>
-        <a href="#">Account</a>
+          {/* <a href="#">Shop</a>
+        <a href="#">Account</a> */}
         </SubMenu>
       </Menu>
 
       <RightMenu>
         <CustomMenu onClick={()=>setburgerStatus(true)}/>
       </RightMenu>
-      <BurgerNav show={burgerStatus}>
+      <BurgerNav style={{backgroundColor:"00132e"}} show={burgerStatus}>
         <CloseWrapper>
           <Close onClick={()=>setburgerStatus(false)} />
           </CloseWrapper>
-        <li><a href="#">Model S</a></li>
-        <li><a href="#">Model 3</a></li>
-        <li><a href="#">Model X</a></li>
-        <li><a href="#">Model Y</a></li>
-        <li><a href="#">Solar Roof</a></li>
+        <li><a style={{color:"gold"}} href="#">Home</a></li>
+        <li><a style={{color:"gold"}} href="#">Events</a></li>
+        <li><a style={{color:"gold"}} href="#">Registration</a></li>
+        <li><a style={{color:"gold"}} href="#">About Us</a></li>
+        {/* <li><a href="#">Solar Roof</a></li>
         <li><a href="#">Solar Panels</a></li>
         <li><a href="#">Existing Inventory</a></li>
         <li><a href="#">Used Inventory</a></li>
@@ -49,7 +50,7 @@ function Header() {
         <li><a href="#">Support</a></li>
         <li><a href="#">Investor Relations</a></li>
         <li><a href="#">Shop</a></li>
-         <li><a href="#">More</a></li>
+         <li><a href="#">More</a></li> */}
         </BurgerNav>
       </Container> 
    
@@ -70,19 +71,20 @@ const Container = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
-
 `
 const Menu = styled.div`
     display:flex;
     align-items: center;
     justify-content: center;
     flex: 1; 
+    margin-right: 120px;
    
   a {
      font-weight: 600;
-      padding: 0 20px;
+      padding: 0 25px;
       text-align: center;
       flex-wrap: nowrap;
+      color:#E0AA3E;
   }
 
   @media(max-width: 1200px){
@@ -133,6 +135,9 @@ const BurgerNav = styled.div`
  }
  a{
    font-weight: bold
+   &hover: {
+  color:white;
+ }
  }
   transition: transform 0.2s
 

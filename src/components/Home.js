@@ -7,14 +7,14 @@ function Home() {
   return (
       <Container>
       <Section
-        title="Model 3"
-        description="Order Online For Touchless Delivery"
-        backgroundImg="model-3.jpg"
+        title="SWARNOTSAV'22"
+        description="Golden Jubilee Year"
+        // backgroundImg="model-3.jpg"
         leftBtnText="Custom Order"
         rightbtnText="Existing Inventory"
         downarrow = "hello"
       />
-      <Section
+      {/* <Section
         title="Model Y"
         description="Order Online For Touchless Delivery"
         backgroundImg="model-y.jpg"
@@ -58,7 +58,7 @@ function Home() {
         description=""
         backgroundImg="accessories.jpg"
         leftBtnText="Custom Order"
-      />
+      /> */}
       
       </Container>
   )

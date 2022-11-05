@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade';
-
+import swar from './swar.png'
  function Section({title,description,leftBtnText,rightbtnText,backgroundImg,downarrow}) {
    return (
-     <Wrap bg={backgroundImg}>
+     // bg={backgroundImg}
+     <Wrap style={{background:"#00132e"}}>
        <Fade bottom>
            <ItemText>
-         <h1>{title}</h1>
-         <p>{description}</p>
+           {/* <h1 style={{ color: "#ebc04f",fontFamily:"mono"}}>{img}</h1> */}
+           <img className='swarnotsav' src={swar}alt="main"/>
+           {/* <p style={{ color: "#E6BE8A"}}>{description}</p>  */}
          </ItemText>
          </Fade>
        <Button>
          <Fade bottom>
-           <ButtonGroup>
+           {/* <ButtonGroup>
                <LeftButton>
                    {leftBtnText}
            </LeftButton>
@@ -22,7 +24,7 @@ import Fade from 'react-reveal/Fade';
                {rightbtnText}
              </RightButton>
            }
-           </ButtonGroup>
+           </ButtonGroup> */}
            </Fade>
          {downarrow &&
            <Downarrow src="/images/down-arrow.svg" />
@@ -52,6 +54,17 @@ const ItemText = styled.div`
   z-index: -1;
   padding-top: 15vh;
   text-align: center;
+
+    @media (max-width:768px) {
+    .swarnotsav {
+        max-width: 400px;
+        max-height: 300px;
+        padding-top: 19vh;
+  
+    }
+}
+
+}
 `
 
 const ButtonGroup = styled.div`
