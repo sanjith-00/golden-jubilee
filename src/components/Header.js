@@ -5,6 +5,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
+import { borderBottom } from '@mui/system';
+import logo from './logo.png'
 
 function Header() {
   const  [burgerStatus , setburgerStatus] = useState(false)
@@ -13,7 +15,7 @@ function Header() {
     <Container>
       {/* just add school logo alone */}
       <a>
-         {/* <img src="/images/logo.svg" alt="logo"/> */}
+        <img style={{paddingTop:"5px",paddingLeft:"15px"}} width='90px' height= '60px' className='logo' src={logo} alt="logo"/>
       </a>
       <Menu>
         {cars && cars.map((car ,index) => (
@@ -28,14 +30,14 @@ function Header() {
       <RightMenu>
         <CustomMenu onClick={()=>setburgerStatus(true)}/>
       </RightMenu>
-      <BurgerNav style={{backgroundColor:"00132e"}} show={burgerStatus}>
+      <BurgerNav style={{backgroundColor:"white"}} show={burgerStatus}>
         <CloseWrapper>
           <Close onClick={()=>setburgerStatus(false)} />
           </CloseWrapper>
-        <li><a style={{color:"gold"}} href="#">Home</a></li>
-        <li><a style={{color:"gold"}} href="#">Events</a></li>
-        <li><a style={{color:"gold"}} href="#">Registration</a></li>
-        <li><a style={{color:"gold"}} href="#">About Us</a></li>
+        <li><a style={{ color: "black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Home</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Events</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Registration</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">About Us</a></li>
         {/* <li><a href="#">Solar Roof</a></li>
         <li><a href="#">Solar Panels</a></li>
         <li><a href="#">Existing Inventory</a></li>
@@ -82,9 +84,13 @@ const Menu = styled.div`
   a {
      font-weight: 600;
       padding: 0 25px;
+      padding-top: 8px;
       text-align: center;
       flex-wrap: nowrap;
-      color:#E0AA3E;
+      color:#f3cb44;
+      &:hover,&:active {
+        color:white;
+      }
   }
 
   @media(max-width: 1200px){
@@ -129,15 +135,15 @@ const BurgerNav = styled.div`
  display: flex;
  flex-direction: column;
  text-align: start;
+ 
  transform:${props => props.show ? 'translateX(0)' : 'translateX(100%)'};
  li{
-   padding: 10px 0px
+   padding: 10px 0px;
  }
+
  a{
-   font-weight: bold
-   &hover: {
-  color:white;
- }
+   font-weight: bold;
+
  }
   transition: transform 0.2s
 
