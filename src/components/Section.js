@@ -10,7 +10,7 @@ import swar from './swar.png'
            <ItemText>
            {/* <h1 style={{ color: "#ebc04f",fontFamily:"mono"}}>{img}</h1> */}
            <img className='swarnotsav' src={swar}alt="main"/>
-           {/* <p style={{ color: "#E6BE8A"}}>{description}</p>  */}
+           <h1 className='word' style={{ color: "#f3cb44",fontSize:"xx-large",fontWeight:"bolder",fontFamily:"cursive",textAlign:"center"}}>{description}</h1>  
          </ItemText>
          </Fade>
        <Button>
@@ -62,9 +62,8 @@ const ItemText = styled.div`
         padding-top: 19vh;
   
     }
-}
 
-}
+
 `
 
 const ButtonGroup = styled.div`

@@ -8,7 +8,7 @@ function Home() {
       <Container>
       <Section
         title="SWARNOTSAV'22"
-        description="Golden Jubilee Year"
+        description="THE TVS SCHOOL"
         // backgroundImg="model-3.jpg"
         leftBtnText="Custom Order"
         rightbtnText="Existing Inventory"

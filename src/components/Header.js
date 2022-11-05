@@ -14,8 +14,8 @@ function Header() {
   return (
     <Container>
       {/* just add school logo alone */}
-      <a>
-        <img style={{paddingTop:"5px",paddingLeft:"15px"}} width='90px' height= '60px' className='logo' src={logo} alt="logo"/>
+      <a href='/'>
+        <img  style={{paddingTop:"5px",paddingLeft:"15px",cursor:"pointer"}} width='90px' height= '60px' className='logo' src={logo} alt="logo"/>
       </a>
       <Menu>
         {cars && cars.map((car ,index) => (
@@ -87,9 +87,9 @@ const Menu = styled.div`
       padding-top: 8px;
       text-align: center;
       flex-wrap: nowrap;
-      color:#f3cb44;
+      color:white;
       &:hover,&:active {
-        color:white;
+        color:#f3cb44;
       }
   }
 
@@ -127,7 +127,7 @@ const BurgerNav = styled.div`
  top: 0;
  bottom: 0;
  right: 0;
- background-color: white;
+ background:white;
  width: 300px;
  z-index: 16; 
  list-style:none;
