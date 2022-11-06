@@ -55,6 +55,16 @@ const ItemText = styled.div`
   padding-top: 15vh;
   text-align: center;
 
+  h1 {
+    padding-right: 50px;
+
+    @media (max-width:768px) {
+      .word {
+     
+    }
+  }
+  }
+
     @media (max-width:768px) {
     .swarnotsav {
         max-width: 400px;
@@ -62,6 +72,7 @@ const ItemText = styled.div`
         padding-top: 19vh;
   
     }
+  }
 
 
 `
