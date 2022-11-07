@@ -9,8 +9,11 @@ import swar from './swar.png'
        <Fade bottom>
            <ItemText>
            {/* <h1 style={{ color: "#ebc04f",fontFamily:"mono"}}>{img}</h1> */}
-           <img className='swarnotsav' src={swar}alt="main"/>
-           <h1 className='word' style={{ color: "#f3cb44",fontSize:"xx-large",fontWeight:"bolder",fontFamily:"cursive",textAlign:"center"}}>{description}</h1>  
+            <h1 class="JsGRdQ">THE TVS SCHOOL</h1>
+           <img className='swarnotsav' src={swar} alt="main" />
+           <h3 style={{ color: "white", fontsize: "40px", fontWeight: "bolder", paddingRight: "40px" }}>As</h3>
+           <h1 style={{color:"white",fontsize:"40px",fontWeight:"bolder",paddingRight:"40px",fontFamily:"monospace",marginTop:"20px",color:"rgb(244,202,71)"}}>VERSENY'22</h1>
+           {/* <h1 className='word' style={{ color: "#f3cb44", fontSize: "xx-large", fontWeight: "bolder", fontFamily: "cursive", textAlign: "center" }}>{description}</h1>  */}
          </ItemText>
          </Fade>
        <Button>
@@ -52,17 +55,22 @@ const Wrap = styled.div`
 
 const ItemText = styled.div`
   z-index: -1;
-  padding-top: 15vh;
+  padding-top: 25vh;
   text-align: center;
 
-  h1 {
-    padding-right: 50px;
-
-    @media (max-width:768px) {
-      .word {
-     
-    }
+  .JsGRdQ {
+    font-size: 60px;
   }
+
+  .swarnotsav{
+    width: 400px
+  }
+
+  h1 {
+    color: rgb(244,202,71);
+    fontweight: 400;
+    fontstyle: fantasy;
+    text-decoration: none;
   }
 
     @media (max-width:768px) {

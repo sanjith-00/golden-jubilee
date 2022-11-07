@@ -7,6 +7,7 @@ import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
 import { borderBottom } from '@mui/system';
 import logo from './logo.png'
+import register from './registration';
 
 function Header() {
   const  [burgerStatus , setburgerStatus] = useState(false)
@@ -15,12 +16,16 @@ function Header() {
     <Container>
       {/* just add school logo alone */}
       <a href='/'>
-        <img  style={{paddingTop:"5px",paddingLeft:"15px",cursor:"pointer"}} width='90px' height= '60px' className='logo' src={logo} alt="logo"/>
+        <img  style={{paddingTop:"5px",paddingLeft:"15px",cursor:"pointer"}} width='90px' height= '65px' className='logo' src={logo} alt="logo"/>
       </a>
       <Menu>
-        {cars && cars.map((car ,index) => (
+        {/* {cars && cars.map((car ,index) => (
           <a  key={index} href="/">{car}</a>
-        ))}
+        ))} */}
+        <a href='/'>HOME</a>
+        <a onClick={register}  href="/events.js">EVENTS</a>
+        <a  href="#">REGISTRATION</a>
+        <a  href="#">ABOUT US</a>
         <SubMenu>
           {/* <a href="#">Shop</a>
         <a href="#">Account</a> */}
@@ -35,7 +40,7 @@ function Header() {
           <Close onClick={()=>setburgerStatus(false)} />
           </CloseWrapper>
         <li><a style={{ color: "black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Home</a></li>
-        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Events</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">VERSENY-2022</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Registration</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">About Us</a></li>
         {/* <li><a href="#">Solar Roof</a></li>
