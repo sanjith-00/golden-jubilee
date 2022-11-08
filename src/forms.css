@@ -53,6 +53,29 @@ input{
     font-size: 14px;
     font-weight: 300;
 }
+.btn-google {
+    background-color: hsl(7, 71%, 55%); 
+  }
+  .btn-social {
+    padding-left: 64px;
+    position: relative;
+    z-index: 1;
+    
+   
+    
+  }
+  .btn-social > .fa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    background: hsla(0, 0, 0, 0.1);
+    line-height: 3.2;
+    border-radius: 5px 0 0 5px;
+  }
 ::placeholder{
     color: #e5e5e5;
 }

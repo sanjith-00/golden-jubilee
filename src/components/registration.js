@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "../forms.css"
 
-function form(){
+function Form(){
   return(
     <><div class="background">
       <div class="shape"></div>
@@ -29,6 +29,12 @@ function form(){
       </form></>
   )
 }
+
+function Google(){
+  return(
+  <a href="#" class="btn btn-social btn-google"><i class="fa fa-google"></i> Sign in with Google</a>
+  )
+}
 function Register() {
 
 return (
@@ -37,6 +43,7 @@ return (
     width: '100vw',
     height: '100vh'
   }}>
+    <Google></Google>
    
 </div>
   )
