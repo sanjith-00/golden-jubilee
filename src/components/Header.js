@@ -7,11 +7,18 @@ import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
 import { borderBottom } from '@mui/system';
 import logo from './logo.png'
-import register from './registration';
+import Event from './events'
+import { Link,Route,Routes } from 'react-router-dom';
+import Home from './Home';
+
+
 
 function Header() {
   const  [burgerStatus , setburgerStatus] = useState(false)
   const cars = useSelector(selectCars)
+  function handle() {
+
+  }
   return (
     <Container>
       {/* just add school logo alone */}
@@ -22,10 +29,10 @@ function Header() {
         {/* {cars && cars.map((car ,index) => (
           <a  key={index} href="/">{car}</a>
         ))} */}
-        <a href='/'>HOME</a>
-        <a onClick={register}  href="/events.js">EVENTS</a>
-        <a  href="#">REGISTRATION</a>
-        <a  href="#">ABOUT US</a>
+        <Link to="/">HOME</Link>
+        <Link  to="/events">EVENTS</Link>
+        <Link  to="/registration">REGISTRATION</Link>
+        <Link  to="/about us">ABOUT US</Link>
         <SubMenu>
           {/* <a href="#">Shop</a>
         <a href="#">Account</a> */}
@@ -40,7 +47,7 @@ function Header() {
           <Close onClick={()=>setburgerStatus(false)} />
           </CloseWrapper>
         <li><a style={{ color: "black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Home</a></li>
-        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">VERSENY-2022</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Verseny-2022</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Registration</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">About Us</a></li>
         {/* <li><a href="#">Solar Roof</a></li>
@@ -58,7 +65,11 @@ function Header() {
         <li><a href="#">Investor Relations</a></li>
         <li><a href="#">Shop</a></li>
          <li><a href="#">More</a></li> */}
-        </BurgerNav>
+      </BurgerNav>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/events' element={<Event/>} />
+      </Routes>
       </Container> 
    
   )

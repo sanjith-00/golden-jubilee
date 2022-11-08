@@ -1,20 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade';
-import swar from './swar.png'
+import { Card } from "../components/card/card";
+import swar from './swar.png';
+import Header from './Header'
+
  function Section({title,description,leftBtnText,rightbtnText,backgroundImg,downarrow}) {
    return (
      // bg={backgroundImg}
-     <Wrap style={{background:"#00132e"}}>
+     <Wrap style={{ background: "#00132e" }}>
+       <Header />
        <Fade bottom>
            <ItemText>
            {/* <h1 style={{ color: "#ebc04f",fontFamily:"mono"}}>{img}</h1> */}
             <h1 class="JsGRdQ">THE TVS SCHOOL</h1>
            <img className='swarnotsav' src={swar} alt="main" />
-           <h3 style={{ color: "white", fontsize: "40px", fontWeight: "bolder", paddingRight: "40px" }}>As</h3>
-           <h1 style={{color:"white",fontsize:"40px",fontWeight:"bolder",paddingRight:"40px",fontFamily:"monospace",marginTop:"20px",color:"rgb(244,202,71)"}}>VERSENY'22</h1>
+           {/* <h3 style={{ color: "white", fontsize: "40px", fontWeight: "bolder", paddingRight: "40px" }}>As</h3>
+           <h1 style={{color:"white",fontsize:"40px",fontWeight:"bolder",paddingRight:"40px",fontFamily:"monospace",marginTop:"20px",color:"rgb(244,202,71)"}}>VERSENY'22</h1> */}
            {/* <h1 className='word' style={{ color: "#f3cb44", fontSize: "xx-large", fontWeight: "bolder", fontFamily: "cursive", textAlign: "center" }}>{description}</h1>  */}
          </ItemText>
+         
          </Fade>
        <Button>
          <Fade bottom>
@@ -28,10 +33,19 @@ import swar from './swar.png'
              </RightButton>
            }
            </ButtonGroup> */}
-           </Fade>
+            {/* <CardContainer>
+            <Card title={"Verseny'22"} date={1} />
+           <Separator />
+           <Card title={"Event 2"} date={2} />
+           <Separator />
+           <Card title={"Event 3 "} date={3} />
+         </CardContainer> */}
+         </Fade>
+          
          {downarrow &&
            <Downarrow src="/images/down-arrow.svg" />
            }
+           
          </Button>
        </Wrap>
    )
@@ -55,11 +69,11 @@ const Wrap = styled.div`
 
 const ItemText = styled.div`
   z-index: -1;
-  padding-top: 25vh;
+  padding-top: 30vh;
   text-align: center;
 
   .JsGRdQ {
-    font-size: 60px;
+    font-size: 70px;
   }
 
   .swarnotsav{
@@ -127,3 +141,19 @@ const Downarrow = styled.img`
 const Button = styled.div`
  
 `
+
+const CardContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00132E;
+  overflow: hidden;
+  margintop: 200px;
+`;
+
+const Separator = styled.span`
+  margin-left: 30px;
+  margin-right: 30px;
+`;
