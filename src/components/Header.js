@@ -7,9 +7,7 @@ import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
 import { borderBottom } from '@mui/system';
 import logo from './logo.png'
-import Event from './events'
-import { Link,Route,Routes } from 'react-router-dom';
-import Home from './Home';
+
 
 
 
@@ -29,10 +27,10 @@ function Header() {
         {/* {cars && cars.map((car ,index) => (
           <a  key={index} href="/">{car}</a>
         ))} */}
-        <Link to="/">HOME</Link>
-        <Link  to="/events">EVENTS</Link>
-        <Link  to="/registration">REGISTRATION</Link>
-        <Link  to="/about us">ABOUT US</Link>
+        <a href="/">HOME</a>
+        <a  href="/events">EVENTS</a>
+        <a href="/registration">REGISTRATION</a>
+        <a  href="/about us">ABOUT US</a>
         <SubMenu>
           {/* <a href="#">Shop</a>
         <a href="#">Account</a> */}
@@ -50,26 +48,7 @@ function Header() {
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Verseny-2022</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Registration</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">About Us</a></li>
-        {/* <li><a href="#">Solar Roof</a></li>
-        <li><a href="#">Solar Panels</a></li>
-        <li><a href="#">Existing Inventory</a></li>
-        <li><a href="#">Used Inventory</a></li>
-        <li><a href="#">Trade-In</a></li>
-        <li><a href="#">Test Drive</a></li>
-        <li><a href="#">powerWall</a></li>
-        <li><a href="#">Commercial Energy</a></li>
-        <li><a href="#">Utilities</a></li>
-        <li><a href="#">Charging</a></li>
-        <li><a href="#">Find us</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">Investor Relations</a></li>
-        <li><a href="#">Shop</a></li>
-         <li><a href="#">More</a></li> */}
       </BurgerNav>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/events' element={<Event/>} />
-      </Routes>
       </Container> 
    
   )
