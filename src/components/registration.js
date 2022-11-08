@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{ useState, useEffect, useRef} from 'react'
 import styles from "../forms.css"
 import Select from 'react-select'
 import { initializeApp } from "firebase/app";
-import { getDatabase,ref,set,child,push } from "firebase/database";
+import { getDatabase,ref,onValue,set,child,push, get, orderByChild } from "firebase/database";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/database';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmZmuckTBZuUwetU3xROn0DBmdFjGZpvE",
@@ -15,10 +20,16 @@ const firebaseConfig = {
   measurementId: "G-H56FQJJJ16"
 };
 
+
+export const LoadingComponent = () => <div>Loading...</div>;
+
 const app = initializeApp(firebaseConfig);
+
+firebase.initializeApp(firebaseConfig)
 const database = getDatabase(app);
 
 
+const auth = getAuth();
 
 const customStyles = {
   menu: (provided, state) => ({
@@ -45,7 +56,24 @@ const options = [
   { value: 'strawberry', label: 'Strawberry' },
   { value: 'vanilla', label: 'Vanilla' }
 ]
-class Register extends React.Component {
+class Reg extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { data: null,isLoading:true };
+    this.onSettingsChanged = this.onSettingsChanged.bind(this);
+  }
+  onSettingsChanged(data){
+    this.setState({data: data.val(), isLoading:false});
+  }
+  componentDidMount() {
+    
+    let rootRef = firebase.database().ref();
+    rootRef
+    .child('users/'+getAuth().currentUser.email.replace('@gmail.com',''))
+    .once('value',this.onSettingsChanged)
+    
+  }
   handleSubmit = (event) => {
     event.preventDefault()
     var data = [];
@@ -55,37 +83,114 @@ class Register extends React.Component {
     data.push(event.target[3].value)
     data.push(event.target[4].value)
     data.push(event.target[5].value)
-    var aRef=ref(database,'users/'+data[0].replace('@gmail.com',''))
+    var aRef=ref(database,'users/'+getAuth().currentUser.email.replace('@gmail.com',''))
     set(aRef,{data})
 
   
   }
+ 
+
 render(){
+  var title;
+  var desc;
+  var email;
+  var name;
+  var cls;
+  var wa;
+  var ph;
+  var schl;
+  var button;
+  if(this.state.data!=null){
+     title="Update Profile"
+     desc="Update your profile details"
+     email=this.state.data.data[0]
+     name=this.state.data.data[1]
+     ph=this.state.data.data[2]
+     wa=this.state.data.data[3]
+     cls=this.state.data.data[4]
+     schl=this.state.data.data[5]
+     button="Update"
+  }
+  else{
+     title="Register Now"
+     desc="Register yourself for Swarnotsav"
+     button="Register"
+ 
+  }
+  if(this.state.isLoading){
+      return(<LoadingComponent/>)
+  }
+  
   return(
+
+    
       <form onSubmit={this.handleSubmit}>
+
   <div class="container">
-    <h2>Register</h2>
-    <p>Please fill in this form to register</p>
+    <h2>{title}</h2>
+    <p>{desc}</p>
     <hr />
 
-    <input type="email" placeholder="Enter Email" name="email" id="email" required/>
-    <input type="text" placeholder="Enter Name" name="name" id="name" required/>
-    <input type="number" placeholder="Enter Phone Number" name="ph" id="ph" required/>
-    <input type="number" placeholder="Enter WhatsApp Number" name="wa" id="wa" required/>
-    <input type="text" placeholder="Enter Class" name="class" id="class" required/>
-    <input type="text" placeholder="Enter School" name="school" id="school" required/>
+    <input type="email" placeholder="Enter Email" name="email" id="email" required defaultValue={email}/>
+    <input type="text" placeholder="Enter Name" name="name" id="name"  defaultValue={name} required/>
+    <input type="number" placeholder="Enter Phone Number" name="ph"  defaultValue={ph} id="ph" required/>
+    <input type="number" placeholder="Enter WhatsApp Number" name="wa"  defaultValue={wa} id="wa" required/>
+    <input type="text" placeholder="Enter Class" name="class" id="class"  defaultValue={cls} required/>
+    <input type="text" placeholder="Enter School" name="school" id="school"  defaultValue={schl} required/>
    
     
    
     <hr/>
 
-    <button type="submit" class="registerbtn">Register</button>
+    <button type="submit" class="registerbtn">{button}</button>
   </div>
 
  
 </form>
   )
 }
+}
+
+ function Register(){
+  const [user] = useAuthState(auth);
+  const [isLoading, setLoading] = useState(true);
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
+
+if(isLoading){
+return(<LoadingComponent/>)
+}
+if(user){
+ 
+
+return(
+
+<Reg></Reg>
+)
+
+}
+
+    
+            
+     
+
+
+else{
+  return(
+    <div className='con'>
+    <button type="button" onClick={signInWithGoogle} className="login-with-google-btn" >
+      Sign in with Google
+    </button>
+    </div>
+    )
+}
+  }
+
+
+function signInWithGoogle(){
+    const provider = new GoogleAuthProvider();
+  signInWithPopup(auth , provider);
 }
 
 
