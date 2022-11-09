@@ -6,6 +6,8 @@ import { getDatabase,ref,onValue,set,child,push, get, orderByChild } from "fireb
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { ThreeCircles } from  'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'firebase/compat/database';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
@@ -21,7 +23,20 @@ const firebaseConfig = {
 };
 
 
-export const LoadingComponent = () => <div>Loading...</div>;
+export const LoadingComponent = () => <div class="container" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+  <ThreeCircles
+  height="100"
+  width="100"
+  color="#ffffff"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel="three-circles-rotating"
+  outerCircleColor=""
+  innerCircleColor=""
+  middleCircleColor=""
+/>
+</div>;
 
 const app = initializeApp(firebaseConfig);
 
