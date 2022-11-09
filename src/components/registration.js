@@ -122,8 +122,8 @@ render(){
   if(this.state.isExists){
      return(
       <div class="con">
-        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'10px'}}>You Have Already Registered</h3>
-        <p onClick={()=>this.setState({isExists:false})} style={{color:'lightgray',  fontFamily: 'Poppins'}}>Update your details?</p>
+        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'40px', paddingBottom:'5px'}}>You Have Already Registered</h3>
+        <p onClick={()=>this.setState({isExists:false})} style={{cursor:'pointer',color:'lightgray',  fontFamily: 'Poppins'}}>Update your details?</p>
       </div>
      )
   }
