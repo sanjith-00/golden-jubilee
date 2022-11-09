@@ -126,7 +126,7 @@ render(){
   }
   else{
      title="Register Now"
-     desc="Register yourself for Swarnotsav"
+     desc=`Register ${getAuth().currentUser.email.replace('@gmail.com','')} for Swarnotsav`
      button="Register"
  
   }
@@ -156,7 +156,7 @@ render(){
     <input type="text" placeholder="Enter Name" name="name" id="name"  defaultValue={name} required/>
     <input type="number" placeholder="Enter Phone Number" name="ph"  defaultValue={ph} id="ph" required/>
     <input type="number" placeholder="Enter WhatsApp Number" name="wa"  defaultValue={wa} id="wa" required/>
-    <input type="text" placeholder="Enter Class" name="class" id="class"  defaultValue={cls} required/>
+    <input type="number" placeholder="Enter Class" name="class" id="class"  defaultValue={cls} required/>
     <input type="text" placeholder="Enter School" name="school" id="school"  defaultValue={schl} required/>
    
     
