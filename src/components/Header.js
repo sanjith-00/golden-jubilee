@@ -44,10 +44,10 @@ function Header() {
         <CloseWrapper>
           <Close onClick={()=>setburgerStatus(false)} />
           </CloseWrapper>
-        <li><a style={{ color: "black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Home</a></li>
-        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Verseny-2022</a></li>
-        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">Registration</a></li>
-        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="#">About Us</a></li>
+        <li><a style={{ color: "black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/">Home</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/events">Verseny-2022</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/registration">Registration</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/about-us">About Us</a></li>
       </BurgerNav>
       </Container> 
    
