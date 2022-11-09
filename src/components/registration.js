@@ -60,11 +60,11 @@ class Reg extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: null,isLoading:true };
+    this.state = { data: null,isLoading:true,isExists:null };
     this.onSettingsChanged = this.onSettingsChanged.bind(this);
   }
   onSettingsChanged(data){
-    this.setState({data: data.val(), isLoading:false});
+    this.setState({data: data.val(), isLoading:false,isExists:true});
   }
   componentDidMount() {
     
@@ -77,7 +77,7 @@ class Reg extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
     var data = [];
-    data.push(event.target[0].value)
+    data.push(getAuth().currentUser.email)
     data.push(event.target[1].value)
     data.push(event.target[2].value)
     data.push(event.target[3].value)
@@ -93,7 +93,6 @@ class Reg extends React.Component {
 render(){
   var title;
   var desc;
-  var email;
   var name;
   var cls;
   var wa;
@@ -103,7 +102,6 @@ render(){
   if(this.state.data!=null){
      title="Update Profile"
      desc="Update your profile details"
-     email=this.state.data.data[0]
      name=this.state.data.data[1]
      ph=this.state.data.data[2]
      wa=this.state.data.data[3]
@@ -120,6 +118,15 @@ render(){
   if(this.state.isLoading){
       return(<LoadingComponent/>)
   }
+
+  if(this.state.isExists){
+     return(
+      <div class="con">
+        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'10px'}}>You Have Already Registered</h3>
+        <p onClick={()=>this.setState({isExists:false})} style={{color:'lightgray',  fontFamily: 'Poppins'}}>Update your details?</p>
+      </div>
+     )
+  }
   
   return(
 
@@ -131,7 +138,6 @@ render(){
     <p>{desc}</p>
     <hr />
 
-    <input type="email" placeholder="Enter Email" name="email" id="email" required defaultValue={email}/>
     <input type="text" placeholder="Enter Name" name="name" id="name"  defaultValue={name} required/>
     <input type="number" placeholder="Enter Phone Number" name="ph"  defaultValue={ph} id="ph" required/>
     <input type="number" placeholder="Enter WhatsApp Number" name="wa"  defaultValue={wa} id="wa" required/>
