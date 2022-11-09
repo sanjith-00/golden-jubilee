@@ -148,7 +148,7 @@ render(){
     
       <form onSubmit={this.handleSubmit}>
 
-  <div class="container" style={{paddingTop:'10px'}}>
+  <div class="container" >
     <h2>{title}</h2>
     <p>{desc}</p>
     <hr />

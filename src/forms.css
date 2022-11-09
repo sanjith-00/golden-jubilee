@@ -10,6 +10,7 @@
 }
 
 .container{
+  
   display:flex;
   flex-direction: column;
   
@@ -181,6 +182,5 @@ button{
   form {
    width:100vw;
   border-radius: 0px;
-  min-height: 100vh;
   }
 }
