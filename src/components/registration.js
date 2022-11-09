@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { ThreeCircles } from  'react-loader-spinner'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import 'firebase/compat/database';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
