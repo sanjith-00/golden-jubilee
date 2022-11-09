@@ -38,6 +38,7 @@ export const LoadingComponent = () => <div class="container" style={{display:'fl
 />
 </div>;
 
+
 const app = initializeApp(firebaseConfig);
 
 firebase.initializeApp(firebaseConfig)
