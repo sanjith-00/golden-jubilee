@@ -60,11 +60,17 @@ class Reg extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: null,isLoading:true,isExists:null };
+    this.state = { data: null,isLoading:true,isExists:false };
     this.onSettingsChanged = this.onSettingsChanged.bind(this);
   }
   onSettingsChanged(data){
-    this.setState({data: data.val(), isLoading:false,isExists:true});
+    this.setState({data: data.val(), isLoading:false});
+    if(this.state.data!=null){
+    this.setState({
+      isExists:true
+    })
+  }
+  
   }
   componentDidMount() {
     
@@ -74,22 +80,30 @@ class Reg extends React.Component {
     .once('value',this.onSettingsChanged)
     
   }
+
+  handleClick = () => {
+    this.setState({
+      isExists: false
+    }
+    )
+  }
   handleSubmit = (event) => {
     event.preventDefault()
     var data = [];
     data.push(getAuth().currentUser.email)
+    data.push(event.target[0].value)
     data.push(event.target[1].value)
     data.push(event.target[2].value)
     data.push(event.target[3].value)
     data.push(event.target[4].value)
-    data.push(event.target[5].value)
     var aRef=ref(database,'users/'+getAuth().currentUser.email.replace('@gmail.com',''))
     set(aRef,{data})
+
+    window.location.reload(false)
 
   
   }
  
-
 render(){
   var title;
   var desc;
@@ -100,6 +114,7 @@ render(){
   var schl;
   var button;
   if(this.state.data!=null){
+    
      title="Update Profile"
      desc="Update your profile details"
      name=this.state.data.data[1]
@@ -122,8 +137,8 @@ render(){
   if(this.state.isExists){
      return(
       <div class="con">
-        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'40px', paddingBottom:'5px'}}>You Have Already Registered</h3>
-        <p onClick={()=>this.setState({isExists:false})} style={{cursor:'pointer',color:'lightgray',  fontFamily: 'Poppins'}}>Update your details?</p>
+        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'40px', paddingBottom:'5px', paddingLeft:'10px', paddingRight:'10px'}}>Success! Data has been updated!</h3>
+        <p onClick={this.handleClick} style={{cursor:'pointer',color:'lightgray',  fontFamily: 'Poppins'}}>Update your details?</p>
       </div>
      )
   }
@@ -148,7 +163,7 @@ render(){
    
     <hr/>
 
-    <button type="submit" class="registerbtn">{button}</button>
+    <button type="submit"  class="registerbtn">{button}</button>
   </div>
 
  
