@@ -115,14 +115,14 @@ render(){
   var button;
   if(this.state.data!=null){
     
-     title="Update Profile"
-     desc="Update your profile details"
+     title="Edit Profile"
+     desc="Edit your profile details"
      name=this.state.data.data[1]
      ph=this.state.data.data[2]
      wa=this.state.data.data[3]
      cls=this.state.data.data[4]
      schl=this.state.data.data[5]
-     button="Update"
+     button="Update Changes"
   }
   else{
      title="Register Now"
@@ -137,8 +137,8 @@ render(){
   if(this.state.isExists){
      return(
       <div class="con">
-        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'40px', paddingBottom:'5px', paddingLeft:'10px', paddingRight:'10px'}}>Success! Data has been updated!</h3>
-        <p onClick={this.handleClick} style={{cursor:'pointer',color:'lightgray',  fontFamily: 'Poppins'}}>Update your details?</p>
+        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'40px', paddingBottom:'5px', paddingLeft:'10px', paddingRight:'10px'}}>You have registered!</h3>
+        <p onClick={this.handleClick} style={{cursor:'pointer',color:'lightgray',  fontFamily: 'Poppins'}}>Edit your details?</p>
       </div>
      )
   }
