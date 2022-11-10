@@ -6,9 +6,9 @@ import { getDatabase,ref,onValue,set,child,push, get, orderByChild } from "fireb
 import { useAuthState } from 'react-firebase-hooks/auth';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { ThreeCircles } from  'react-loader-spinner'
 import 'firebase/compat/database';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import Header from './Header';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmZmuckTBZuUwetU3xROn0DBmdFjGZpvE",
@@ -22,7 +22,21 @@ const firebaseConfig = {
 };
 
 
-export const LoadingComponent = () => <div>Loading...</div>;
+export const LoadingComponent = () => <div class="container" style={{display:'flex',flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+  <ThreeCircles
+  height="100"
+  width="100"
+  color="#ffffff"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  ariaLabel="three-circles-rotating"
+  outerCircleColor=""
+  innerCircleColor=""
+  middleCircleColor=""
+/>
+</div>;
+
 
 const app = initializeApp(firebaseConfig);
 
@@ -61,11 +75,17 @@ class Reg extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: null,isLoading:true };
+    this.state = { data: null,isLoading:true,isExists:false };
     this.onSettingsChanged = this.onSettingsChanged.bind(this);
   }
   onSettingsChanged(data){
     this.setState({data: data.val(), isLoading:false});
+    if(this.state.data!=null){
+    this.setState({
+      isExists:true
+    })
+  }
+  
   }
   componentDidMount() {
     
@@ -75,26 +95,33 @@ class Reg extends React.Component {
     .once('value',this.onSettingsChanged)
     
   }
+
+  handleClick = () => {
+    this.setState({
+      isExists: false
+    }
+    )
+  }
   handleSubmit = (event) => {
     event.preventDefault()
     var data = [];
+    data.push(getAuth().currentUser.email)
     data.push(event.target[0].value)
     data.push(event.target[1].value)
     data.push(event.target[2].value)
     data.push(event.target[3].value)
     data.push(event.target[4].value)
-    data.push(event.target[5].value)
     var aRef=ref(database,'users/'+getAuth().currentUser.email.replace('@gmail.com',''))
     set(aRef,{data})
+
+    window.location.reload(false)
 
   
   }
  
-
 render(){
   var title;
   var desc;
-  var email;
   var name;
   var cls;
   var wa;
@@ -102,24 +129,33 @@ render(){
   var schl;
   var button;
   if(this.state.data!=null){
-     title="Update Profile"
-     desc="Update your profile details"
-     email=this.state.data.data[0]
+    
+     title="Edit Profile"
+     desc="Edit your profile details"
      name=this.state.data.data[1]
      ph=this.state.data.data[2]
      wa=this.state.data.data[3]
      cls=this.state.data.data[4]
      schl=this.state.data.data[5]
-     button="Update"
+     button="Update Changes"
   }
   else{
      title="Register Now"
-     desc="Register yourself for Swarnotsav"
+     desc=`Register ${getAuth().currentUser.email.replace('@gmail.com','')} for Swarnotsav`
      button="Register"
  
   }
   if(this.state.isLoading){
       return(<LoadingComponent/>)
+  }
+
+  if(this.state.isExists){
+     return(
+      <div class="con">
+        <h3 style={{color:'white',fontFamily: 'Poppins',paddingTop:'40px', paddingBottom:'5px', paddingLeft:'10px', paddingRight:'10px'}}>You have registered!</h3>
+        <p onClick={this.handleClick} style={{cursor:'pointer',color:'lightgray',  fontFamily: 'Poppins'}}>Edit your details?</p>
+      </div>
+     )
   }
   
   return(
@@ -127,23 +163,22 @@ render(){
     
       <form onSubmit={this.handleSubmit}>
 
-      <div class="container">
+  <div class="container" >
     <h2>{title}</h2>
     <p>{desc}</p>
     <hr />
 
-    <input type="email" placeholder="Enter Email" name="email" id="email" required defaultValue={email}/>
     <input type="text" placeholder="Enter Name" name="name" id="name"  defaultValue={name} required/>
     <input type="number" placeholder="Enter Phone Number" name="ph"  defaultValue={ph} id="ph" required/>
     <input type="number" placeholder="Enter WhatsApp Number" name="wa"  defaultValue={wa} id="wa" required/>
-    <input type="text" placeholder="Enter Class" name="class" id="class"  defaultValue={cls} required/>
+    <input type="number" placeholder="Enter Class" name="class" id="class"  defaultValue={cls} required/>
     <input type="text" placeholder="Enter School" name="school" id="school"  defaultValue={schl} required/>
    
     
    
     <hr/>
 
-    <button type="submit" class="registerbtn">{button}</button>
+    <button type="submit"  class="registerbtn">{button}</button>
   </div>
 
  
@@ -197,5 +232,3 @@ function signInWithGoogle(){
 
 
 export default Register
-
-
