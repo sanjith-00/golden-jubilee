@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import Fade from 'react-reveal/Fade';
 import { Card } from "../components/card/card";
 import swar from './swar.png';
-import Header from './Header'
+import Header from './Header';
+import vid from './vid.gif';
+
 
  function Section({title,description,leftBtnText,rightbtnText,backgroundImg,downarrow}) {
    return (
@@ -12,33 +14,29 @@ import Header from './Header'
        <Header />
        <Fade bottom>
            <ItemText>
-           {/* <h1 style={{ color: "#ebc04f",fontFamily:"mono"}}>{img}</h1> */}
             <h1 class="JsGRdQ">THE TVS SCHOOL</h1>
            <img className='swarnotsav' src={swar} alt="main" />
-           {/* <h3 style={{ color: "white", fontsize: "40px", fontWeight: "bolder", paddingRight: "40px" }}>As</h3>
-           <h1 style={{color:"white",fontsize:"40px",fontWeight:"bolder",paddingRight:"40px",fontFamily:"monospace",marginTop:"20px",color:"rgb(244,202,71)"}}>VERSENY'22</h1> */}
-           {/* <h1 className='word' style={{ color: "#f3cb44", fontSize: "xx-large", fontWeight: "bolder", fontFamily: "cursive", textAlign: "center" }}>{description}</h1>  */}
+
          </ItemText>
          
          </Fade>
        <Button>
          <Fade bottom>
-           {/* <ButtonGroup>
-               <LeftButton>
-                   {leftBtnText}
-           </LeftButton>
-           {rightbtnText &&
-             <RightButton>
-               {rightbtnText}
-             </RightButton>
-           }
-           </ButtonGroup> */}
-           <CardContainer>
+       {/* <div class="vid" style={{color:"#00132E",paddingtop:"0px"}}>
+              <img src={vid} alt="wait until the page loads" />
+           </div> */}
+           <CardContainer active={"true"}>
             <a style={{cursor:"pointer"}} href='/events'><Card title={"Verseny'22"} date={1} des={"Learn More...."} /></a> 
            <Separator />
-           <Card title={"Upcoming"} date={2} des={"Learn More...."} />
+           <Card title={"INTERSCHOOL"} date={2} des={"Learn More...."} />
            <Separator />
-           <Card title={"Upcoming "} date={3} des={"Learn More...."}/>
+             <Card title={"MARATHON RUN"} date={3} des={"Learn More...."} />
+           </CardContainer>
+
+             <CardContainer active={"true"}>
+            <a style={{cursor:"pointer"}} href='/events'><Card title={"CARNIVAL"} date={1} des={"Learn More...."} /></a> 
+           <Separator />
+           <a style={{cursor:"pointer"}} href='/events'><Card title={"GOLDEN JUBILEE"} date={2} des={"Learn More...."} /></a>
          </CardContainer>
          </Fade>
           
@@ -157,3 +155,5 @@ const Separator = styled.span`
   margin-left: 30px;
   margin-right: 30px;
 `;
+
+

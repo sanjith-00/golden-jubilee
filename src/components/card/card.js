@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Tilt from "react-parallax-tilt";
 
-export const Card = ({title, imgUrl, date, des}) => {
+export const Card = ({title, imgUrl, date, des,ki}) => {
   return (
     <Tilt>
       <CardWrapper>
@@ -11,8 +11,7 @@ export const Card = ({title, imgUrl, date, des}) => {
           {/* <CardTextDate>{1} days ago</CardTextDate> */}
           <CardTextTitle>{title}</CardTextTitle>
           <CardTextBody>
-            Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae
-            temporibus omnis illum maxime quod deserunt eligendi dolor
+           {ki}
           </CardTextBody>
         </CardTextWrapper>
         <CardStatWrapper>
@@ -38,7 +37,7 @@ export const Card = ({title, imgUrl, date, des}) => {
 const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: 300px;
-  grid-template-rows: 210px 210px 80px;
+  grid-template-rows: 300px 300px 80px;
   grid-template-areas: "image" "text" "stats";
   border-radius: 18px;
   background: black;
@@ -87,10 +86,11 @@ const CardTextTitle = styled.h2`
 `;
 
 const CardTextBody = styled.p`
-  color: gold;
+  color: white;
   font-size: 15px;
   font-weight: 300;
-  padding-top: 20px
+  padding-top: 20px;
+   word-spacing: 5px;
 `;
 
  const CardStatWrapper = styled.div`
@@ -102,7 +102,7 @@ const CardTextBody = styled.p`
 
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  background: cyan;
+  background: white;
 `;
 
  const CardStats = styled.div`
@@ -114,7 +114,8 @@ const CardTextBody = styled.p`
   padding: 10px;
 `;
 
- const LinkText = styled.a`
-  color: #fff;
-  text-decoration: none;
+const LinkText = styled.a`
+  color: black;
+  text-decoration: underline;
+  fontweight: bolder;
 `;

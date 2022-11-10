@@ -30,7 +30,7 @@ function Header() {
         <a href="/">HOME</a>
         <a  href="/events">EVENTS</a>
         <a href="/registration">REGISTRATION</a>
-        <a  href="/about us">ABOUT US</a>
+        <a  href="/aboutus">CONTACT US</a>
         <SubMenu>
           {/* <a href="#">Shop</a>
         <a href="#">Account</a> */}
@@ -47,7 +47,7 @@ function Header() {
         <li><a style={{ color: "black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/">Home</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/events">Verseny-2022</a></li>
         <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/registration">Registration</a></li>
-        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/about us">About Us</a></li>
+        <li><a style={{color:"black",fontSize:"large",borderBottom:"3px solid #f3cb44"}} href="/contactus">CONTACT Us</a></li>
       </BurgerNav>
       </Container> 
    
